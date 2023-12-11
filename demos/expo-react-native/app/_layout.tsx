@@ -1,4 +1,4 @@
-import { TamaguiProvider, Theme, View } from '@tamagui/core';
+import { TamaguiProvider, Theme } from '@tamagui/core';
 import { Slot } from "expo-router";
 import { useFonts } from 'expo-font';
 
