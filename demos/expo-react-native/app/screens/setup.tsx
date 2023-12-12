@@ -1,24 +1,27 @@
-import { Button, H1, SizableText, YStack } from "tamagui";
-import { Link } from "expo-router";
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
+import { Button, Text, View } from "react-native";
+import { truncateAddress } from "../utils/functions";
+import { setup_styles } from '../styles/styles';
 
-export default function SetupScreen() {
+export default function SetupScreen({ navigation }: {
+  navigation: NavigationProp<ParamListBase>;
+}) {
+  navigation.setOptions({
+    headerBackTitleVisible: false,
+    headerTintColor: "#008080",
+  });
+
   return (
-    <YStack
-      px="$4"
-      py="$4"
-      justifyContent="space-between"
-      height="50%"
-      my="auto"
-    >
-      <YStack space="$4">
-        <H1 textAlign="center">Setup New Account</H1>
-        <SizableText>
-          You need to setup an account before you can use this app.
-        </SizableText>
-      </YStack>
-      <Button>
-        <Link href="/">Setup</Link>
-      </Button>
-    </YStack>
+    <View style={setup_styles.container}>
+      <Text style={setup_styles.title}>Setup New Account</Text>
+      <Text style={setup_styles.address}>{truncateAddress("0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")}</Text>
+      <Text style={setup_styles.instruction}>Visit the page following page with a web browser to setup your account</Text>
+      <View style={setup_styles.urlBox}>
+        <Text style={setup_styles.url}>https://account.starknet-react.com</Text>
+      </View>
+      <View style={setup_styles.buttonContainer}>
+        <Button title="Done" color="#ffffff" />
+      </View>
+    </View>
   );
 }

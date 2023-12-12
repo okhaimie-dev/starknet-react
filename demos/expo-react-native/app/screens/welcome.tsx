@@ -1,57 +1,41 @@
 import { View, Image, Text, Button } from "react-native";
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import React from "react";
+import { welcome_styles } from "../styles/styles";
 
 export default function Welcome({ navigation }: {
   navigation: NavigationProp<ParamListBase>;
 }) {
   navigation.setOptions({
     headerShown: false
-  })
+  });
+
+  const navigateToSetup = () => {
+    navigation.navigate("Setup new account");
+  };
+
   return (
-    <View>
-      <View style={styles.container_1}>
-        <Text style={{ color: "#008080", fontSize: 25, fontWeight: "700" }}>COMPANION APP</Text>
+    <View style={welcome_styles.container}>
+      <View style={welcome_styles.container_1}>
+        <Text style={welcome_styles.title}>COMPANION APP</Text>
       </View>
-      <View style={styles.container_1}>
-        <Image source={require('../assets/welcome.png')} style={{ width: '100%', height: 250 }} />
+      <View style={welcome_styles.container_1}>
+        <Image source={require('../assets/welcome.png')} style={welcome_styles.image} />
       </View>
-      <View style={styles.container_2}>
+      <View style={welcome_styles.container_2}>
         <Text style={{ textAlign: "center" }}>
-          <Text style={{ color: "#000000", fontSize: 25, fontWeight: "700" }}>Welcome To </Text>
-          <Text style={{ color: "#008080", fontSize: 25, fontWeight: "700" }}>Companion App</Text>
+          <Text style={welcome_styles.welcome}>Welcome To </Text>
+          <Text style={welcome_styles.app_name}>Companion App</Text>
         </Text>
       </View>
-      <View style={styles.container_3}>
-        <Text style={{ textAlign: "center", color: "#000000", fontSize: 18 }}>
+      <View style={welcome_styles.container_3}>
+        <Text style={welcome_styles.description}>
           Providing an easy way to communicate with your arcade account
         </Text>
       </View>
-      <View style={styles.button_container}>
-        <Button title="Get Started" onPress={() => { navigation.navigate("Setup") }} color="#ffffff" />
+      <View style={welcome_styles.button_container}>
+        <Button title="Get Started" onPress={navigateToSetup} color="#ffffff" />
       </View>
     </View>
   );
-}
-
-const styles = {
-  container_1: {
-    paddingHorizontal: 20,
-    marginTop: 100
-  },
-  container_2: {
-    paddingHorizontal: 20,
-    marginTop: 50
-  },
-  container_3: {
-    paddingHorizontal: 20,
-    marginTop: 25
-  },
-  button_container: {
-    marginHorizontal: 20,
-    marginTop: 25,
-    backgroundColor: "#008080",
-    paddingVertical: 10,
-    borderRadius: 25
-  },
 }
