@@ -6,6 +6,7 @@ import { welcome_styles } from "../styles/styles";
 export default function Welcome({ navigation }: {
   navigation: NavigationProp<ParamListBase>;
 }) {
+
   navigation.setOptions({
     headerShown: false
   });
