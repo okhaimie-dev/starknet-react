@@ -8,7 +8,7 @@ export default function App() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="Setup" component={SetupScreen} />
+      <Stack.Screen name="Setup new account" component={SetupScreen} />
     </Stack.Navigator>
   );
 }
