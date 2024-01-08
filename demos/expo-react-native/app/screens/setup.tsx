@@ -2,6 +2,14 @@ import { H2, Button, Paragraph, YStack } from "tamagui";
 import { ChevronLeft } from "@tamagui/lucide-icons";
 import { Stack, Link } from "expo-router";
 import { Linking } from "react-native";
+import { ec, stark } from "starknet";
+import { useAtom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
+
+const privateKeyAtom = atomWithStorage("privateKey", stark.randomAddress());
+const [privateKey] = useAtom(privateKeyAtom);
+const publicKey = ec.starkCurve.getStarkKey(privateKey);
+console.log("publicKey", publicKey);
 
 export default function Screen() {
   return (
